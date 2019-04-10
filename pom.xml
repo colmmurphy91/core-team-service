@@ -20,7 +20,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>com.cluborg.coreteamservice.CoreTeamServiceApplication</start-class>
-		<docker.image.name>colmmurphy/core-team-service</docker.image.name>
+		<docker.image.name>core-team-service</docker.image.name>
 		<docker.image.tag>version1</docker.image.tag>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.SR2</spring-cloud.version>
@@ -126,7 +126,7 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${basedir}/target/dockerfile</outputDirectory>
+							<outputDirectory>${basedir}/target/</outputDirectory>
 							<resources>
 								<resource>
 									<directory>src/main/docker</directory>
@@ -139,18 +139,34 @@
 			</plugin>
 			<plugin>
 				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.4.10</version>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.10</version>
 				<configuration>
-					<imageName>${docker.image.name}:${docker.image.tag}</imageName>
-					<dockerDirectory>${basedir}/target/dockerfile</dockerDirectory>
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
+					<username>murphy1991</username>
+					<password>Naomhaban1!</password>
+					<contextDirectory>target/</contextDirectory>
+					<repository>murphy1991/${docker.image.name}</repository>
+					<tag>${docker.image.name}</tag>
+					<buildArgs>
+						<JAR_FILE>${basedir}/target/${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default</id>
+						<phase>install</phase>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
 				</configuration>
 			</plugin>
 		</plugins>
