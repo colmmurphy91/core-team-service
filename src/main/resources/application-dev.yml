@@ -1,0 +1,17 @@
+eureka:
+  client:
+    enabled: false
+
+spring:
+  cloud:
+    config:
+      enabled: false
+  data:
+    mongodb:
+      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb/${MONGO_DATABASE}:27017
+  application:
+    name: core-team-service
+
+server:
+  port: 8080
+

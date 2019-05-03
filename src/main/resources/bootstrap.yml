@@ -1,6 +1,6 @@
 spring:
   application:
     name: core-team-service
-  cloud:
-    config:
-      uri: http://config-server:8888
+#  cloud:
+#    config:
+#      uri: http://config-server:8888
