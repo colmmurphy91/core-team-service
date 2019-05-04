@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: core-team-service
-  tag: latest
+  repository: 10.43.248.78:5000/colmmurphy91/core-team-service
+  tag: 0.0.2
   pullPolicy: IfNotPresent
 
 nameOverride: ""
