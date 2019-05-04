@@ -1,4 +1,4 @@
-apiVersion: skaffold/v1beta2
+apiVersion: skaffold/v1beta8
 kind: Config
 build:
   artifacts:
@@ -6,7 +6,7 @@ build:
     context: .
     docker:
       buildArgs:
-        key1: '{{.VERSION}}'
+        key1: '0.0.12'
   tagPolicy:
     envTemplate:
       template: '{{.DOCKER_REGISTRY}}/colmmurphy91/core-team-service:{{.VERSION}}'
