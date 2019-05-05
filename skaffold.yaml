@@ -6,7 +6,7 @@ build:
     context: .
     docker:
       buildArgs:
-        key1: {{.VERSION}}
+        key1: '{{.VERSION}}'
   tagPolicy:
     envTemplate:
       template: '{{.DOCKER_REGISTRY}}/colmmurphy91/core-team-service:{{.VERSION}}'
