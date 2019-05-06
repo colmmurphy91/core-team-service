@@ -5,3 +5,4 @@ metadata:
 data:
   database-name: ClubManagementSystem
   database-auth-name: admin
+  profile: dev
