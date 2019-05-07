@@ -9,6 +9,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb/${MONGO_DATABASE}:27017
+      authentication-database: admin
   application:
     name: core-team-service
 
