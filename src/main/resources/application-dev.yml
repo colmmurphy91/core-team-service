@@ -8,7 +8,7 @@ spring:
       enabled: false
   data:
     mongodb:
-      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb/${MONGO_DATABASE}:27017/ClubManagementSystem?connectTimeoutMS=300000&socketTimeoutMS=300000&readPreference=secondary
+      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb/${MONGO_DATABASE}:27017?connectTimeoutMS=300000&socketTimeoutMS=300000&readPreference=secondary
   application:
     name: core-team-service
 
