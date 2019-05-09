@@ -53,6 +53,27 @@ pipeline {
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
         }
       }
+        when {
+           branch 'staging'
+         }
+         steps {
+              container('maven') {
+
+                // ensure we're not on a detached head
+                sh "git checkout staging"
+                sh "git config --global credential.helper store"
+                sh "jx step git credentials"
+
+                // so we can retrieve the version in later steps
+                sh "echo \$(jx-release-version) > VERSION"
+                sh "mvn versions:set -DnewVersion=\$(cat VERSION)"
+                sh "jx step tag --version \$(cat VERSION)"
+                sh "mvn clean deploy"
+                sh "skaffold version"
+                sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml "
+                sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
+              }
+            }
     }
     stage('Promote to Environments') {
       when {
@@ -71,6 +92,22 @@ pipeline {
           }
         }
       }
+            when {
+              branch 'staging'
+            }
+            steps {
+              container('maven') {
+                dir('charts/core-team-service') {
+                  sh "jx step changelog --version v\$(cat ../../VERSION)"
+
+                  // release the helm chart
+                  sh "jx step helm release"
+
+                  // promote through all 'Auto' promotion Environments
+                  sh "jx promote -b --all-auto --timeout 1h --version \$(cat ../../VERSION)"
+                }
+              }
+            }
     }
   }
   post {
