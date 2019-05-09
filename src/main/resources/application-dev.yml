@@ -8,7 +8,7 @@ spring:
       enabled: false
   data:
     mongodb:
-      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb/${MONGO_DATABASE}:27017
+      uri: mongodb+srv://admin:admin@clubmanagementsystem-liwrx.gcp.mongodb.net/test?retryWrites=true
       authentication-database: admin
   application:
     name: core-team-service
