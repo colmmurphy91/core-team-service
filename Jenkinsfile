@@ -77,7 +77,7 @@ pipeline {
         }
       }
     }
-    stage('Promote to Environments') {
+    stage('Promote to Production') {
       when {
         branch 'master'
       }
@@ -95,6 +95,24 @@ pipeline {
         }
       }
     }
+        stage('Promote to Staging') {
+          when {
+            branch 'staging'
+          }
+          steps {
+            container('maven') {
+              dir('charts/core-team-service') {
+                sh "jx step changelog --version v\$(cat ../../VERSION)"
+
+                // release the helm chart
+                sh "jx step helm release"
+
+                // promote through all 'Auto' promotion Environments
+                sh "jx promote -b --all-auto --timeout 1h --version \$(cat ../../VERSION)"
+              }
+            }
+          }
+        }
   }
   post {
         always {
