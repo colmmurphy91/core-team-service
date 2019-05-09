@@ -96,7 +96,7 @@ pipeline {
       }
     }
      stage('Promote to Staging') {
-          when {
+       when {
             branch 'staging'
           }
           steps {
