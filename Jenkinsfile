@@ -89,7 +89,6 @@ pipeline {
             // release the helm chart
             sh "jx step helm release"
 
-            // promote through all 'Auto' promotion Environments
             sh "jx promote -b --env production --timeout 1h --version \$(cat ../../VERSION)"
           }
         }
@@ -101,13 +100,12 @@ pipeline {
           }
           steps {
             container('maven') {
-              dir('charts/core-team-service/staging') {
+              dir('charts/core-team-service') {
                 sh "jx step changelog --version v\$(cat ../../VERSION)"
 
                 // release the helm chart
                 sh "jx step helm release"
 
-                // promote through all 'Auto' promotion Environments
                 sh "jx promote -b --env staging --timeout 1h --version \$(cat ../../VERSION)"
               }
             }
