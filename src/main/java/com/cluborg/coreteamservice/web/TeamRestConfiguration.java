@@ -13,7 +13,7 @@ public class TeamRestConfiguration {
 
     @Bean
     RouterFunction<ServerResponse> routes(TeamHandler teamHandler) {
-        return route(GET("/all"), teamHandler::all)
+        return route(GET("/teams"), teamHandler::all)
                 .andRoute(POST("/team"), teamHandler::create)
                 .andRoute(GET("/team/{id}"), teamHandler::getOneTeam)
                 .andRoute(PUT("/team/{id}"), teamHandler::updateTeam)

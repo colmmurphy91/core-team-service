@@ -36,7 +36,7 @@ public class TeamControllerTest {
 
         this.webTestClient
                 .get()
-                .uri("/all")
+                .uri("/teams")
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
