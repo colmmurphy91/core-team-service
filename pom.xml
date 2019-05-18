@@ -142,39 +142,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--<plugin>-->
-            <!--<groupId>com.spotify</groupId>-->
-            <!--<artifactId>dockerfile-maven-plugin</artifactId>-->
-            <!--<version>1.4.10</version>-->
-            <!--<configuration>-->
-            <!--<username>murphy1991</username>-->
-            <!--<password>Naomhaban1!</password>-->
-            <!--<contextDirectory>target/</contextDirectory>-->
-            <!--<repository>murphy1991/${docker.image.name}</repository>-->
-            <!--<tag>${docker.image.tag}</tag>-->
-            <!--<buildArgs>-->
-            <!--<JAR_FILE>${basedir}/target/${project.build.finalName}.jar</JAR_FILE>-->
-            <!--</buildArgs>-->
-            <!--</configuration>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<id>default</id>-->
-            <!--<phase>install</phase>-->
-            <!--<goals>-->
-            <!--<goal>build</goal>-->
-            <!--<goal>push</goal>-->
-            <!--</goals>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-            <!--<groupId>org.apache.maven.plugins</groupId>-->
-            <!--<artifactId>maven-deploy-plugin</artifactId>-->
-            <!--<configuration>-->
-            <!--<skip>true</skip>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
