@@ -23,6 +23,7 @@ public class TeamHandler {
 
     public Mono<ServerResponse> all(ServerRequest serverRequest){
         return defaultReadManyResponse(teamService.getAll());
+
     }
 
     public Mono<ServerResponse> create(ServerRequest serverRequest) {
