@@ -5,7 +5,6 @@ import com.cluborg.coreteamservice.repository.TeamRepository;
 import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -36,7 +35,7 @@ public class TeamServiceTest {
 
         Mockito.when(teamRepository.findAll()).thenReturn(saved);
 
-        Flux<Team> composite = teamService.all().thenMany(saved);
+        Flux<Team> composite = teamService.getAll().thenMany(saved);
 
         Predicate<Team> match = team -> saved.any(saveItem -> saveItem.equals(team)).block();
 

@@ -16,7 +16,7 @@ public class TeamService {
     }
 
 
-    public Flux<Team> all() {
+    public Flux<Team> getAll() {
         return teamRepository
                 .findAll();
     }

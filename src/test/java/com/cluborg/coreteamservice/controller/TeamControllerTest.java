@@ -31,7 +31,7 @@ public class TeamControllerTest {
     @Test
     public void shouldGetAllTeams() {
 
-        Mockito.when(teamService.all())
+        Mockito.when(teamService.getAll())
                 .thenReturn(Flux.just(new Team(null, "Cork"), new Team(null, "Kerry")));
 
         this.webTestClient
