@@ -20,9 +20,9 @@ spring:
       enabled: false
   data:
     mongodb:
-      uri: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb/${MONGO_DATABASE}
+       uri: mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@clubmanagementsystem-liwrx.gcp.mongodb.net/${MONGO_DATABASE}?retryWrites=true
   application:
     name: core-team-service
 
 server:
-  port: 8765
+  port: 8080
