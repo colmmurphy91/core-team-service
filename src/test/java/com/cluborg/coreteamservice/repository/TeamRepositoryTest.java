@@ -18,16 +18,18 @@ public class TeamRepositoryTest {
 
     @Autowired
     private TeamRepository teamRepository;
+    private String naomh_aban;
 
     @Test
     public void shouldSaveAndFindByTeamName(){
-        Team team = new Team(null, "Naomh Aban");
+        naomh_aban = "Naomh Aban";
+        Team team = new Team(null, naomh_aban);
         Mono<Team> teamMono  = teamRepository.save(team);
 
-        Publisher<Team> foundTeam = teamMono.then(teamRepository.findByTeamName("Naomh Aban"));
+        Publisher<Team> foundTeam = teamMono.then(teamRepository.findByTeamName(naomh_aban));
 
         StepVerifier.create(foundTeam)
-                .expectNextMatches(team1 -> team1.getTeamName().equals("Naomh Aban"))
+                .expectNextMatches(team1 -> team1.getTeamName().equals(naomh_aban))
                 .verifyComplete();
 
     }
