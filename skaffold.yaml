@@ -4,7 +4,6 @@ build:
   artifacts:
     - image: changeme
       context: .
-      docker: {}
   tagPolicy:
     envTemplate:
       template: '{{.DOCKER_REGISTRY}}/colmmurphy91/core-team-service:{{.VERSION}}'
