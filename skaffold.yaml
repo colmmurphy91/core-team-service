@@ -2,7 +2,7 @@ apiVersion: skaffold/v1beta10
 kind: Config
 build:
   artifacts:
-  - image: changeme
+  - image: core-team-service
     context: .
     docker:
       buildArgs:
