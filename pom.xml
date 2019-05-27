@@ -5,7 +5,7 @@
 
     <groupId>com.cluborg</groupId>
     <artifactId>core-team-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.87</version>
     <packaging>jar</packaging>
     <name>core-team-service</name>
     <description>Demo project for Spring Boot</description>
