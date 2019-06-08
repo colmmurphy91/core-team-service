@@ -90,6 +90,7 @@ pipeline {
             sh "jx step helm release"
 
             sh "jx promote -b --env production --timeout 1h --version \$(cat ../../VERSION)"
+
           }
         }
       }
