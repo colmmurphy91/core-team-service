@@ -2,29 +2,30 @@ apiVersion: skaffold/v1beta8
 kind: Config
 build:
   artifacts:
-    - image: changeme
-      context: .
-      docker:
-        buildArgs:
-          key1:  "{{.DIGEST_HEX}}"
+  - image: changeme
+    context: .
+    docker:
+      buildArgs:
+        key1:  '{{.VERSION}}'
   tagPolicy:
     envTemplate:
       template: '{{.DOCKER_REGISTRY}}/colmmurphy91/core-team-service:{{.VERSION}}'
-  local: {}
+  local:
+    useDockerCLI: true
 deploy:
   kubectl: {}
 profiles:
-  - name: dev
-    build:
-      tagPolicy:
-        envTemplate:
-          template: '{{.DOCKER_REGISTRY}}/colmmurphy91/core-team-service:{{.DIGEST_HEX}}'
-      local: {}
-    deploy:
-      helm:
-        releases:
-          - name: core-team-service
-            chartPath: charts/core-team-service
-            setValueTemplates:
-              image.repository: '{{.DOCKER_REGISTRY}}/colmmurphy91/core-team-service'
-              image.tag: '{{.DIGEST_HEX}}'
+- name: dev
+  build:
+    tagPolicy:
+      envTemplate:
+        template: '{{.DOCKER_REGISTRY}}/colmmurphy91/core-team-service:{{.DIGEST_HEX}}'
+    local: {}
+  deploy:
+    helm:
+      releases:
+      - name: core-team-service
+        chartPath: charts/core-team-service
+        setValueTemplates:
+          image.repository: '{{.DOCKER_REGISTRY}}/colmmurphy91/core-team-service'
+          image.tag: '{{.DIGEST_HEX}}'
