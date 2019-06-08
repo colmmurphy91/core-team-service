@@ -1,5 +1,5 @@
-ARG key1
 FROM openjdk:8-jdk-alpine
+ARG key1
 RUN  apk update && apk upgrade && apk add netcat-openbsd
 RUN mkdir -p /usr/local/coreteamservice
 ADD target/core-team-service-$key1.jar coreteamservice.jar
