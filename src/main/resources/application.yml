@@ -1,28 +1,6 @@
-#eureka:
-#  instance:
-#    lease-renewal-interval-in-seconds: 10
-#  client:
-#    service-url:
-#      defaultZone: http://${tpd.appconfig.peer2-address}/eureka
-
-tpd:
-  appconfig:
-    peer1-address: eureka-peer1:8761
-    peer2-address: eureka-peer2:8762
-
-eureka:
-  client:
-    enabled: false
-
 spring:
-  cloud:
-    config:
-      enabled: false
   data:
     mongodb:
        uri: mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@clubmanagementsystem-liwrx.gcp.mongodb.net/${MONGO_DATABASE}?retryWrites=true
   application:
     name: core-team-service
-
-server:
-  port: 8080

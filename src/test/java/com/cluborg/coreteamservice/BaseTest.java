@@ -25,7 +25,7 @@ properties = "server.port= 0")
 public abstract class BaseTest {
 
     static {
-        System.setProperty("eureka.client.enabled", "false");
+        System.setProperty("eureka.client.enabled", "true");
         System.setProperty("spring.cloud.config.failFast", "false");
     }
 
